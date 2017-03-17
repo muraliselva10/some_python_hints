@@ -29,14 +29,17 @@ class SshToLinuxMachine(object):
 
             if host:
                 self.client = paramiko.SSHClient()
-                self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+                self.client.set_missing_host_key_policy(paramiko.
+                                                        AutoAddPolicy())
 
                 if not password:
                     self.client.connect(host, username=username,
-                                        pkey=paramiko.RSAKey.from_private_key_file
+                                        pkey=paramiko.
+                                        RSAKey.from_private_key_file
                                         (os.path.expanduser('~/.ssh/id_rsa')))
                 else:
-                    self.client.connect(host, port=port, username=username, password=password)
+                    self.client.connect(host, port=port,
+                                        username=username, password=password)
 
         except Exception as e:
                 print e
